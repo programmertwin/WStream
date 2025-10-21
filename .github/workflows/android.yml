@@ -23,9 +23,13 @@ jobs:
 
       - name: Install SDK components
         run: |
-          sdkmanager "platform-tools"                      "platforms;android-34"                      "build-tools;34.0.0"                      "cmdline-tools;latest"
+          sdkmanager "platform-tools" \
+                     "platforms;android-34" \
+                     "build-tools;34.0.0" \
+                     "cmdline-tools;latest"
 
-      - name: Build debug APK (using Gradle 8.7)
+      # از گرادل 8.7 بدون رَپِر استفاده می‌کنیم
+      - name: Build debug APK
         uses: gradle/gradle-build-action@v3
         with:
           gradle-version: 8.7
