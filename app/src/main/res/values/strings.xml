@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WStream</string>
+    <string name="service_description">Streams visible list items (NDJSON over TCP)</string>
+    <string name="open_accessibility">باز کردن تنظیمات Accessibility</string>
+    <string name="app_intro">WStream: بعد از نصب، به Settings &gt; Accessibility برو و «WStream» را فعال کن.
+سپس با کابل گوشی را وصل کن و روی رایانه بزن:
+adb forward tcp:7912 tcp:7912 (یا: adb reverse tcp:7912 tcp:7912)
+و کلاینت را اجرا کن تا داده‌ها را بگیری.</string>
+</resources>
