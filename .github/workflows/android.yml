@@ -17,11 +17,18 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Install Gradle and generate wrapper
-        uses: gradle/gradle-build-action@v3
+      # نصب SDK اندروید (برای اطمینان)
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
         with:
-          gradle-version: 8.7
+          api-level: 34
+          build-tools: 34.0.0
 
+      # استفاده از اکشن جدید گرادل (غیر Deprecated)
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      # اگر رپر نبود، بساز
       - name: Generate Gradle wrapper (if missing)
         run: |
           if [ ! -f ./gradlew ]; then
