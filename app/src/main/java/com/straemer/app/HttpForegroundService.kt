@@ -16,7 +16,8 @@ class HttpForegroundService : Service() {
     override fun onCreate() {
         super.onCreate()
         startForeground(1, makeNotification())
-        server = MiniServer(8713)
+        // فقط روی لوپ‌بک گوش بده
+        server = MiniServer("127.0.0.1", 8713)
         server.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false)
     }
 
@@ -40,20 +41,18 @@ class HttpForegroundService : Service() {
             )
         }
         val pending = PendingIntent.getActivity(
-            this,
-            0,
-            Intent(this, MainActivity::class.java),
+            this, 0, Intent(this, MainActivity::class.java),
             PendingIntent.FLAG_IMMUTABLE
         )
         return Notification.Builder(this, chanId)
             .setContentTitle("UI XML Inspector در حال اجرا")
             .setContentText("پورت 8713 آماده است")
-            .setSmallIcon(android.R.drawable.ic_menu_info_details) // آیکن موجود و سازگار
+            .setSmallIcon(android.R.drawable.ic_menu_info_details)
             .setContentIntent(pending)
             .build()
     }
 
-    class MiniServer(port: Int) : NanoHTTPD(port) {
+    class MiniServer(hostname: String, port: Int) : NanoHTTPD(hostname, port) {
         override fun serve(session: IHTTPSession): Response = when (session.uri) {
             "/latest" -> {
                 val xml = UiDumpAccessibilityService.lastXml.get()
@@ -72,9 +71,7 @@ class HttpForegroundService : Service() {
             }
             "/ping" -> newFixedLengthResponse("OK")
             else -> newFixedLengthResponse(
-                Response.Status.NOT_FOUND,
-                "text/plain",
-                "404"
+                Response.Status.NOT_FOUND, "text/plain", "404"
             )
         }
     }
