@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- اجازه‌ی اجرای Foreground Service (روی Android 9+ الزامی است) -->
+    <!-- لازم برای ساخت سوکت (حتی روی لوپ‌بک) -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
@@ -30,7 +31,6 @@
                 android:resource="@xml/accessibility_service_config" />
         </service>
 
-        <!-- از بیرون هم قابل استارت باشد -->
         <service
             android:name=".HttpForegroundService"
             android:exported="true"
