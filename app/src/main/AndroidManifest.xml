@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- اجازه‌ی اجرای Foreground Service (روی Android 9+ الزامی است) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:label="UI XML Inspector"
         android:allowBackup="true"
@@ -27,7 +30,7 @@
                 android:resource="@xml/accessibility_service_config" />
         </service>
 
-        <!-- این خط را از false به true تغییر دادیم -->
+        <!-- از بیرون هم قابل استارت باشد -->
         <service
             android:name=".HttpForegroundService"
             android:exported="true"
