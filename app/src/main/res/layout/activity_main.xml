@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="match_parent">
+ <Button android:id="@+id/btnEnable" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="فعال‌کردن AccessibilityService"/>
+ <Button android:id="@+id/btnStartServer" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="شروع سرور محلی (8713)"/>
+ <Button android:id="@+id/btnShowXml" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="نمایش آخرین XML"/>
+ <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+  <TextView android:id="@+id/tv" android:layout_width="match_parent" android:layout_height="wrap_content" android:typeface="monospace" android:textIsSelectable="true"/>
+ </ScrollView>
+</LinearLayout>
